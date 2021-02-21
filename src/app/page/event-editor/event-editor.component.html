@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-6 offset-3">
+        <form #eventForm="ngForm" (ngSubmit)="onFormSubmit(eventForm)">
+            <div class="form-group">
+                <label>Esemény</label>
+                <input [(ngModel)]="event.name" name="name" type="text" class="form-control" pattern=".{8,}" required>
+                <div [hidden]="eventForm.controls.name?.valid" class="error-message">A névnek minimum 8 karakter
+                    hosszúnak kell lennie!</div>
+            </div>
+            <div class="form-group">
+                <label>Dátum</label>
+                <input [(ngModel)]="event.date" name="date" type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Id</label>
+                <input [(ngModel)]="event.id" name="id" type="text" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label>Időpont</label>
+                <input [(ngModel)]="event.time" name="time" type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Helyszín: cím</label>
+                <input [(ngModel)]="event.location.address" name="address" type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Helyszín: város</label>
+                <input [(ngModel)]="event.location.city" name="city" type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Helyszín: ország</label>
+                <input [(ngModel)]="event.location.country" name="country" type="text" class="form-control" required>
+            </div>
+            <button [disabled]="eventForm.invalid" class="btn btn-block btn-success">Update</button>
+        </form>
+    </div>
+</div>
